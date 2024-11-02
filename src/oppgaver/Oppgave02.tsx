@@ -1,17 +1,23 @@
 import { useState } from "react";
-import { fetchUsers, queryKeyUsers, User } from "../utils/postForm";
+import { fetchUsersWithError, queryKeyUsers, User } from "../utils/postForm";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { ErrorBoundary } from "./ErrorBoundary01";
 
 /*
+  👉 Oppgave: Vis en feilmelding ved feilende API-kall.
+
+  Nå sjekkes det for undefined på users-objektet.
+  fetchUsers er byttet ut med fetchUsersWithError.
+
   💡 Refleksjonsspørsmål:
-  - Kan du ha for mange ErrorBoundaries?
-  - Hvilke feil er det ErrorBoundary ikke fanger opp?
+  - Hvorfor fanges ikke feilen opp av ErrorBoundary?
+
+  📖 Lesestoff: 
+  - https://tanstack.com/query/latest/docs/framework/react/typescript#typing-the-error-field
 */
 
-export function Fasit01() {
-  // ✅ Wrappet komponenten i ErrorBoundary
+export function Oppgave02() {
   return (
     <ErrorBoundary>
       <Form />
@@ -23,11 +29,15 @@ function Form() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { data: users } = useQuery<User[]>({
+  const { data: users, isLoading } = useQuery<User[]>({
     queryKey: queryKeyUsers,
-    queryFn: fetchUsers,
+    queryFn: fetchUsersWithError,
     staleTime: 0,
   });
+
+  if (isLoading) {
+    return <p>Laster ...</p>;
+  }
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -35,7 +45,7 @@ function Form() {
 
   return (
     <div>
-      <h1>Fasit 1 - ErrorBoundary</h1>
+      <h1>Oppgave 2 - useQuery Error</h1>
       <form onSubmit={onSubmit} className="form">
         <div>
           <label>
@@ -66,8 +76,8 @@ function Form() {
 
       <h2>Eksisterende brukere</h2>
       <ul>
-        {/* Sjekker ikke for undefined for å fremprovosere en feil. Kun for oppgavens skyld. */}
-        {users!.map((u) => (
+        {/* 👇 Siden forrige oppgave, sjekkes det nå om users er undefined */}
+        {users?.map((u) => (
           <li key={u.id}>{`${u.username} ${u.password}`}</li>
         ))}
       </ul>

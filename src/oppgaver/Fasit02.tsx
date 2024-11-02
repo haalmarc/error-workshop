@@ -1,17 +1,18 @@
 import { useState } from "react";
-import { fetchUsers, queryKeyUsers, User } from "../utils/postForm";
+import { fetchUsersWithError, queryKeyUsers, User } from "../utils/postForm";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { ErrorBoundary } from "./ErrorBoundary01";
 
 /*
+  👉 Oppgave: Vis en feilmelding om query feiler.
+
   💡 Refleksjonsspørsmål:
   - Kan du ha for mange ErrorBoundaries?
   - Hvilke feil er det ErrorBoundary ikke fanger opp?
 */
 
-export function Fasit01() {
-  // ✅ Wrappet komponenten i ErrorBoundary
+export function Fasit02() {
   return (
     <ErrorBoundary>
       <Form />
@@ -23,11 +24,19 @@ function Form() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { data: users } = useQuery<User[]>({
+  const {
+    data: users,
+    isLoading,
+    error, // ✅ Henter også ut error
+  } = useQuery<User[]>({
     queryKey: queryKeyUsers,
-    queryFn: fetchUsers,
+    queryFn: fetchUsersWithError,
     staleTime: 0,
   });
+
+  if (isLoading) {
+    return <p>Laster ...</p>;
+  }
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -35,7 +44,7 @@ function Form() {
 
   return (
     <div>
-      <h1>Fasit 1 - ErrorBoundary</h1>
+      <h1>Fasit 2 - useQuery Error</h1>
       <form onSubmit={onSubmit} className="form">
         <div>
           <label>
@@ -65,9 +74,11 @@ function Form() {
       </form>
 
       <h2>Eksisterende brukere</h2>
+      {/* ✅ La til feilmelding */}
+      {error && <p>{error.message}</p>}
       <ul>
-        {/* Sjekker ikke for undefined for å fremprovosere en feil. Kun for oppgavens skyld. */}
-        {users!.map((u) => (
+        {/* 👇 Siden forrige oppgave, sjekkes det nå om users er undefined */}
+        {users?.map((u) => (
           <li key={u.id}>{`${u.username} ${u.password}`}</li>
         ))}
       </ul>

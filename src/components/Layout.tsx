@@ -3,9 +3,14 @@ import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 // Liste over oppgaver og fasit
 const taskList = [
   { path: "/", label: "Oppgave 1" },
-  { path: "/fasit01", label: "Fasit 01" },
+  { path: "/fasit1", label: "Fasit 1" },
+
   { path: "/opg2", label: "Oppgave 2" },
+  { path: "/fasit2", label: "Fasit 2" },
+
   { path: "/opg3", label: "Oppgave 3" },
+  { path: "/fasit3", label: "Fasit 3" },
+
   { path: "/opg4", label: "Oppgave 4" },
   { path: "/fasit4", label: "Fasit 4" },
   { path: "/opg5", label: "Oppgave 5" },
