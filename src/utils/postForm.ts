@@ -24,9 +24,7 @@ export async function postFormWithError(username: string, password: string) {
 
 export async function fetchUsers(): Promise<User[]> {
   const response = await axios.get("http://localhost:8000/users");
-  if (response.status !== 200) {
-    throw new Error("Failed to fetch users");
-  }
+
   return response.data;
 }
 
