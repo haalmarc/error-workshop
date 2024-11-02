@@ -1,6 +1,6 @@
 import {
-  RandomName,
-  fetchRandomName,
+  User,
+  fetchFirstUser,
   postForm,
   queryKeyUsers,
 } from "../utils/postForm";
@@ -33,7 +33,7 @@ type Inputs = z.infer<typeof schema>;
 export function Oppgave13() {
   const { data } = useQuery({
     queryKey: ["random-name"],
-    queryFn: fetchRandomName,
+    queryFn: fetchFirstUser,
   });
 
   if (!data) {
@@ -44,7 +44,7 @@ export function Oppgave13() {
 }
 
 interface FormProps {
-  data: RandomName;
+  data: User;
 }
 
 function Form({ data }: FormProps) {
@@ -95,7 +95,7 @@ function Form({ data }: FormProps) {
             <input
               type="text"
               {...register("username")}
-              defaultValue={data?.name}
+              defaultValue={data?.username}
             />
             {errors.username && (
               <span className="errorMessage">{errors.username.message}</span>

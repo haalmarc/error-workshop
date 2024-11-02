@@ -2,15 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { fetchUsers, queryKeyUsers } from "../utils/postForm";
 
-function formatDateToDDMMYYYY(date: string) {
-  const asDate = new Date(date);
-  const day = String(asDate.getDate()).padStart(2, "0");
-  const month = String(asDate.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
-  const year = asDate.getFullYear();
-
-  return `🎉 ${day}.${month}.${year} 🎉`;
-}
-
 // Liste over oppgaver og fasit
 const taskList = [
   { path: "/", label: "Oppgave 1" },
@@ -169,9 +160,7 @@ export function Layout() {
       <h2>Eksisterende brukere</h2>
       <ul>
         {users?.map((u) => (
-          <li key={u.id}>{`${u.username} ${u.password} ${
-            u?.birthday ? formatDateToDDMMYYYY(u.birthday) : ""
-          }`}</li>
+          <li key={u.id}>{`${u.username} ${u.password}`}</li>
         ))}
       </ul>
     </div>

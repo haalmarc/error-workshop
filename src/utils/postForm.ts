@@ -20,7 +20,7 @@ export async function postFormWithError(username: string, password: string) {
   );
 }
 
-export async function fetchUsers() {
+export async function fetchUsers(): Promise<User[]> {
   const response = await fetch("http://localhost:8000/users");
   if (!response.ok) {
     throw new Error("Failed to fetch users");
@@ -28,35 +28,14 @@ export async function fetchUsers() {
   return response.json();
 }
 
-export interface RandomName {
-  name: string;
+export interface User {
+  id: string;
+  username: string;
+  password: string;
 }
-export async function fetchRandomName(): Promise<RandomName> {
-  const response = await fetch("http://localhost:8000/random-name");
-  if (!response.ok) {
-    throw new Error("Failed to fetch name");
-  }
-  return response.json();
+export async function fetchFirstUser(): Promise<User> {
+  const response = await fetchUsers();
+  return response[0];
 }
 
 export const queryKeyUsers = ["users"];
-
-export async function postFormWithBirthday(
-  username: string,
-  password: string,
-  birthday: string
-) {
-  const response = await fetch("http://localhost:8000/users", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      username,
-      password,
-      birthday,
-    }),
-  });
-
-  await response.json();
-}
