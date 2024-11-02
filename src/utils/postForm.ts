@@ -1,16 +1,18 @@
+import axios from "axios";
+
 export async function postForm(username: string, password: string) {
-  const response = await fetch("http://localhost:8000/users", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
+  await axios.post(
+    "http://localhost:8000/users",
+    JSON.stringify({
       username,
       password,
     }),
-  });
-
-  await response.json();
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -21,11 +23,11 @@ export async function postFormWithError(username: string, password: string) {
 }
 
 export async function fetchUsers(): Promise<User[]> {
-  const response = await fetch("http://localhost:8000/users");
-  if (!response.ok) {
+  const response = await axios.get("http://localhost:8000/users");
+  if (response.status !== 200) {
     throw new Error("Failed to fetch users");
   }
-  return response.json();
+  return response.data;
 }
 
 export interface User {
