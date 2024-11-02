@@ -1,10 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
-import { fetchUsers, queryKeyUsers } from "../utils/postForm";
 
 // Liste over oppgaver og fasit
 const taskList = [
   { path: "/", label: "Oppgave 1" },
+  { path: "/fasit01", label: "Fasit 01" },
   { path: "/opg2", label: "Oppgave 2" },
   { path: "/opg3", label: "Oppgave 3" },
   { path: "/opg4", label: "Oppgave 4" },
@@ -22,21 +21,7 @@ const taskList = [
   { path: "/fasit13", label: "Fasit 13" },
 ];
 
-interface User {
-  username: string;
-  password: string;
-  birthday?: string;
-  id: string;
-}
-
 export function Layout() {
-  const { data: users } = useQuery<User[]>({
-    queryKey: queryKeyUsers,
-    queryFn: fetchUsers,
-    staleTime: 0,
-    refetchInterval: 20 * 1000,
-  });
-
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -156,13 +141,6 @@ export function Layout() {
       <hr />
 
       <Outlet />
-
-      <h2>Eksisterende brukere</h2>
-      <ul>
-        {users?.map((u) => (
-          <li key={u.id}>{`${u.username} ${u.password}`}</li>
-        ))}
-      </ul>
     </div>
   );
 }

@@ -22,6 +22,19 @@ export async function postFormWithError(username: string, password: string) {
   );
 }
 
+export async function fetchUsersWithError(): Promise<User[]> {
+  await new Promise((resolve, reject) =>
+    setTimeout(() => reject(new Error("En feil skjedde")), 2000)
+  );
+
+  return new Promise((resolve) =>
+    setTimeout(
+      () => resolve([{ id: "1", username: "JohnDoe", password: "secret123" }]),
+      2000
+    )
+  );
+}
+
 export async function fetchUsers(): Promise<User[]> {
   const response = await axios.get("http://localhost:8000/users");
 

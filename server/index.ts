@@ -12,7 +12,6 @@ app.use(express.json());
 interface User {
   username: string;
   password: string;
-  birthday?: string;
   id: string;
 }
 
@@ -38,7 +37,6 @@ app.post("/users", (req, res) => {
   const checkedUser = {
     username: newUser.username,
     password: newUser.password,
-    birthday: newUser.birthday,
     id: (users.length + 1).toString(),
   };
 
