@@ -5,7 +5,7 @@ import React from "react";
 import { ErrorBoundary } from "./ErrorBoundary01";
 
 /*
-  👉 Oppgave: Vis en feilmelding ved feilende API-kall.
+  👉 Oppgave: Vis en feilmelding via error-objektet fra TanStack Query ved feilende API-kall.
 
   Nå sjekkes det for undefined på users-objektet.
   fetchUsers er byttet ut med fetchUsersWithError.

@@ -5,8 +5,6 @@ import React from "react";
 import { ErrorBoundary } from "./ErrorBoundary01";
 
 /*
-  👉 Oppgave: Vis en feilmelding om query feiler.
-
   💡 Refleksjonsspørsmål:
   - Kan du ha for mange ErrorBoundaries?
   - Hvilke feil er det ErrorBoundary ikke fanger opp?
