@@ -7,7 +7,7 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 /*
-  👉 Oppgave: Vis feilmelding ved feilende mutering
+  👉 Oppgave: Vis generisk feilmelding ved feilende mutering
 
   💡 Refleksjonsspørsmål:
   - Hvordan er feilhåndteringen i useMutation annerledes enn useQuery?
@@ -16,7 +16,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 interface NewUserRequest {
   username: string;
   password: string;
-  requestedError: PostError;
+  requestedError?: PostError;
 }
 
 export function Oppgave06() {

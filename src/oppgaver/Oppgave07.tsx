@@ -7,10 +7,16 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 /*
-  👉 Oppgave: Vis feilmelding ved feilende mutering
+  👉 Oppgave: Vis passende feilmelding avhengig av type feil
+
+  - Endepunktet returnerer {isSuccess: boolean, errorReason: PostError}
+    - Hvis ikke suksess, gi en passende feilmelding utifra errorReason
+    - Hvis suksess, gi melding om suksessfull lagt til bruker 
+
+  ✨ Jeg har nå lagt til noen flere knapper, for å fremprovosere visse feil
 
   💡 Refleksjonsspørsmål:
-  - Hvordan er feilhåndteringen i useMutation annerledes enn useQuery?
+  - Hvordan kan du vite om endepunktet serverer på format error.message eller {errorReason}?
 */
 
 interface NewUserRequest {
@@ -19,7 +25,7 @@ interface NewUserRequest {
   requestedError?: PostError;
 }
 
-export function Fasit06() {
+export function Oppgave07() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const queryClient = useQueryClient();
@@ -39,15 +45,15 @@ export function Fasit06() {
     },
   });
 
-  async function onSubmit(event: React.FormEvent) {
+  async function onSubmit(event: React.FormEvent, requestedError?: PostError) {
     event.preventDefault();
 
-    mutate({ username, password, requestedError: "UNKNOWN" });
+    mutate({ username, password, requestedError: requestedError });
   }
 
   return (
     <div>
-      <h1>Oppgave 6 - Feilmelding ved mutering</h1>
+      <h1>Oppgave 7 - Tilpasset feilmelding</h1>
       <form onSubmit={onSubmit} className="form">
         <div>
           <label>
@@ -73,6 +79,31 @@ export function Fasit06() {
 
         <button className="submitButton" type="submit" disabled={isPending}>
           Opprett bruker
+        </button>
+        {/* ✨ Legger til knapper for å trigge feilmeldinger */}
+        <button
+          className="submitButton"
+          type="button"
+          disabled={isPending}
+          onClick={(e) => onSubmit(e, "UNKNOWN")}
+        >
+          UNKNOWN
+        </button>
+        <button
+          className="submitButton"
+          type="button"
+          disabled={isPending}
+          onClick={(e) => onSubmit(e, "TOO_SHORT_PASSWORD")}
+        >
+          TOO_SHORT_PASSWORD
+        </button>
+        <button
+          className="submitButton"
+          type="button"
+          disabled={isPending}
+          onClick={(e) => onSubmit(e, "MAX_REQUESTS_REACHED")}
+        >
+          MAX_REQUESTS_REACHED
         </button>
         {error && <p>En feil skjedde</p>}
       </form>
