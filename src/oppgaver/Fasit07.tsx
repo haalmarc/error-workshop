@@ -73,7 +73,7 @@ export function Fasit07() {
 
   return (
     <div>
-      <h1>Oppgave 7 - Tilpasset feilmelding</h1>
+      <h1>Fasit 7 - Tilpasset feilmelding</h1>
       <form onSubmit={onSubmit} className="form">
         <div>
           <label>

@@ -47,7 +47,7 @@ export function Fasit06() {
 
   return (
     <div>
-      <h1>Oppgave 6 - Feilmelding ved mutering</h1>
+      <h1>Fasit 6 - Feilmelding ved mutering</h1>
       <form onSubmit={onSubmit} className="form">
         <div>
           <label>

@@ -22,9 +22,6 @@ const taskList = [
 
   { path: "/opg7", label: "Oppgave 7" },
   { path: "/fasit7", label: "Fasit 7" },
-
-  { path: "/opg13", label: "Oppgave 13" },
-  { path: "/fasit13", label: "Fasit 13" },
 ];
 
 export function Layout() {
@@ -50,12 +47,11 @@ export function Layout() {
 
   return (
     <div className="layout-container">
-      <h1>Form Workshop</h1>
+      <h1>Error Workshop</h1>
       <nav>
         <div>
-          <h2>Vanilla React</h2>
           <ul>
-            {taskList.slice(0, 5).map((task, index) => (
+            {taskList.slice(0, 6).map((task, index) => (
               <li
                 key={index}
                 style={{
@@ -76,36 +72,9 @@ export function Layout() {
             ))}
           </ul>
         </div>
-
         <div>
-          <h2>React hook form</h2>
           <ul>
-            {taskList.slice(5, 11).map((task, index) => (
-              <li
-                key={index}
-                style={{
-                  fontWeight:
-                    task.path === location.pathname ? "bold" : "normal",
-                }}
-              >
-                <Link
-                  to={task.path}
-                  style={{
-                    textDecoration:
-                      task.path === location.pathname ? "underline" : "none",
-                  }}
-                >
-                  {task.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2>TanStack Query</h2>
-          <ul>
-            {taskList.slice(11).map((task, index) => (
+            {taskList.slice(6).map((task, index) => (
               <li
                 key={index}
                 style={{

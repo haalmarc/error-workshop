@@ -42,7 +42,7 @@ function Form() {
 
   return (
     <div>
-      <h1>Oppgave 3 - useQuery Error vs Error Boundary</h1>
+      <h1>Fasit 3 - useQuery Error vs Error Boundary</h1>
       <form onSubmit={onSubmit} className="form">
         <div>
           <label>

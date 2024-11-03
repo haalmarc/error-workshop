@@ -88,7 +88,7 @@ function Form() {
 
   return (
     <div>
-      <h1>Oppgave 5 - Retry</h1>
+      <h1>Fasit 5 - Retry</h1>
       <form onSubmit={onSubmit} className="form">
         <div>
           <label>
