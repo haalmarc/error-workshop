@@ -4,7 +4,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { Oppgave01 } from "./oppgaver/Oppgave01";
 import { Layout } from "./components/Layout";
 
-import { Oppgave13 } from "./oppgaver/Oppgave13";
 import { Fasit01 } from "./oppgaver/Fasit01";
 import { Oppgave02 } from "./oppgaver/Oppgave02";
 import { Fasit02 } from "./oppgaver/Fasit02";
@@ -44,8 +43,6 @@ export function App() {
 
           <Route path="opg7" element={<Oppgave07 />} />
           <Route path="fasit7" element={<Fasit07 />} />
-
-          <Route path="opg13" element={<Oppgave13 />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
