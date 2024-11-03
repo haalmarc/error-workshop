@@ -13,15 +13,10 @@ const taskList = [
 
   { path: "/opg4", label: "Oppgave 4" },
   { path: "/fasit4", label: "Fasit 4" },
+
   { path: "/opg5", label: "Oppgave 5" },
-  { path: "/opg6", label: "Oppgave 6" },
-  { path: "/opg7", label: "Oppgave 7" },
-  { path: "/opg8", label: "Oppgave 8" },
-  { path: "/opg9", label: "Oppgave 9" },
-  { path: "/fasit9", label: "Fasit 9" },
-  { path: "/opg10", label: "Oppgave 10" },
-  { path: "/opg11", label: "Oppgave 11" },
-  { path: "/opg12", label: "Oppgave 12" },
+  { path: "/fasit5", label: "Fasit 5" },
+
   { path: "/opg13", label: "Oppgave 13" },
   { path: "/fasit13", label: "Fasit 13" },
 ];
