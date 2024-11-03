@@ -28,6 +28,23 @@ app.get("/faulty-users", (req, res) => {
   res.status(500).json({ message: "Brukerdata ikke tilgjengelig" });
 });
 
+type PostError = "UNKNOWN" | "TOO_SHORT_PASSWORD" | "MAX_REQUESTS_REACHED";
+app.post("/faulty-users", (req, res) => {
+  const requestedError = req.body?.requestedError as PostError;
+
+  let status = 500;
+  let message = "En ukjent feil skjedde";
+
+  if (requestedError === "TOO_SHORT_PASSWORD") {
+    status = 200;
+    message = "TOO_SHORT_PASSWORD";
+  }
+
+  console.log(requestedError);
+
+  res.status(status).json({ message: message });
+});
+
 app.post("/users", (req, res) => {
   const newUser = req.body;
   if (!newUser.username) {

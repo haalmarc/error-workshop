@@ -17,6 +17,9 @@ const taskList = [
   { path: "/opg5", label: "Oppgave 5" },
   { path: "/fasit5", label: "Fasit 5" },
 
+  { path: "/opg6", label: "Oppgave 6" },
+  { path: "/fasit6", label: "Fasit 6" },
+
   { path: "/opg13", label: "Oppgave 13" },
   { path: "/fasit13", label: "Fasit 13" },
 ];

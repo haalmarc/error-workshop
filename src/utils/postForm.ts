@@ -15,11 +15,22 @@ export async function postForm(username: string, password: string) {
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function postFormWithError(username: string, password: string) {
-  await new Promise((resolve, reject) =>
-    setTimeout(() => reject(new Error("Brukernavn allerede i bruk")), 2000)
-  );
+export type PostError =
+  | "UNKNOWN"
+  | "TOO_SHORT_PASSWORD"
+  | "MAX_REQUESTS_REACHED";
+export async function postFormWithAxiosError(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  username: string,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  password: string,
+  requestedError?: PostError // For oppgavens skyld. For å fremprovosere ulike typer feil
+) {
+  const response = await axios.post("http://localhost:8000/faulty-users", {
+    requestedError: requestedError,
+  });
+
+  return response.data;
 }
 
 export async function fetchUsersWithError(): Promise<User[]> {
