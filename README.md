@@ -2,9 +2,7 @@
 
 Workshop for å lære feilhåndtering i React. Du finner oppgavene i `src/oppgaver`.
 
-Du leser oppgave1 i `Oppgave1.tsx`, og ser fasit i `Oppgave2.tsx` og så videre.
-
-Unntaket er når det fins en egen fasit-fil, e.g. `Faist4.tsx`. Da ser du fasiten, uten en ny oppgave.
+Du leser oppgave1 i `Oppgave01.tsx`, og ser fasit i `Fasit01.tsx`, og så videre.
 
 # Setup
 

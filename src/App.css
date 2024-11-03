@@ -60,6 +60,10 @@ nav {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+
+    &:disabled {
+      opacity: 0.7;
+    }
   }
 
   button:hover {
