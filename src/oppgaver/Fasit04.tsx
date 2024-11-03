@@ -7,7 +7,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { ErrorBoundary } from "./ErrorBoundary01";
-import axios from "axios";
+import { getFriendlyErrorMessage } from "./getFriendlyErrorMessage04";
 
 /*
   💡 Refleksjonsspørsmål:
@@ -20,20 +20,6 @@ export function Fasit04() {
       <Form />
     </ErrorBoundary>
   );
-}
-
-interface ErrorData {
-  message?: string;
-}
-
-function getFriendlyErrorMessage(error: Error | null) {
-  const defaultMessage = "En ukjent feil skjedde. Prøv igjen senere.";
-
-  if (axios.isAxiosError<ErrorData>(error)) {
-    return error.response?.data?.message || defaultMessage;
-  }
-
-  return error?.message || defaultMessage;
 }
 
 function Form() {
@@ -63,7 +49,7 @@ function Form() {
 
   return (
     <div>
-      <h1>Oppgave 4 - AxiosError</h1>
+      <h1>Fasit 4 - AxiosError</h1>
       <form onSubmit={onSubmit} className="form">
         <div>
           <label>
@@ -94,7 +80,7 @@ function Form() {
 
       <h2>Eksisterende brukere</h2>
 
-      {/* ✅ Mapper nå error over til en feilmelding */}
+      {/* ✅ Mapper nå error over til en finere feilmelding */}
       {error && <p>{friendlyErrorMessage}</p>}
       <ul>
         {users?.map((u) => (

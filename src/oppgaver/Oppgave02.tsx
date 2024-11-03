@@ -7,6 +7,7 @@ import { ErrorBoundary } from "./ErrorBoundary01";
 /*
   👉 Oppgave: Vis en feilmelding via error-objektet fra TanStack Query ved feilende API-kall.
 
+  ✨ Endringer
   Nå sjekkes det for undefined på users-objektet.
   fetchUsers er byttet ut med fetchUsersWithError.
 
@@ -76,7 +77,7 @@ function Form() {
 
       <h2>Eksisterende brukere</h2>
       <ul>
-        {/* 👇 Siden forrige oppgave, sjekkes det nå om users er undefined */}
+        {/* ✨ Siden forrige oppgave, sjekkes det nå om users er undefined */}
         {users?.map((u) => (
           <li key={u.id}>{`${u.username} ${u.password}`}</li>
         ))}
