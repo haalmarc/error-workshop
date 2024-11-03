@@ -24,6 +24,10 @@ app.get("/users", (req, res) => {
   res.json(users);
 });
 
+app.get("/faulty-users", (req, res) => {
+  res.status(500).json({ message: "Brukerdata ikke tilgjengelig" });
+});
+
 app.post("/users", (req, res) => {
   const newUser = req.body;
   if (!newUser.username) {

@@ -35,6 +35,12 @@ export async function fetchUsersWithError(): Promise<User[]> {
   );
 }
 
+export async function fetchUsersWithAxiosError(): Promise<User[]> {
+  const response = await axios.get("http://localhost:8000/faulty-users");
+
+  return response.data;
+}
+
 export async function fetchUsers(): Promise<User[]> {
   const response = await axios.get("http://localhost:8000/users");
 

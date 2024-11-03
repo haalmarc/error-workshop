@@ -10,6 +10,8 @@ import { Oppgave02 } from "./oppgaver/Oppgave02";
 import { Fasit02 } from "./oppgaver/Fasit02";
 import { Oppgave03 } from "./oppgaver/Oppgave03";
 import { Fasit03 } from "./oppgaver/Fasit03";
+import { Oppgave04 } from "./oppgaver/Oppgave04";
+import { Fasit04 } from "./oppgaver/Fasit04";
 
 export function App() {
   return (
@@ -24,6 +26,9 @@ export function App() {
 
           <Route path="opg3" element={<Oppgave03 />} />
           <Route path="fasit3" element={<Fasit03 />} />
+
+          <Route path="opg4" element={<Oppgave04 />} />
+          <Route path="fasit4" element={<Fasit04 />} />
 
           <Route path="opg13" element={<Oppgave13 />} />
 
