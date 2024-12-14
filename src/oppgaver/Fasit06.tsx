@@ -7,10 +7,9 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 /*
-  👉 Oppgave: Vis feilmelding ved feilende mutering
-
   💡 Refleksjonsspørsmål:
-  - Hvordan er feilhåndteringen i useMutation annerledes enn useQuery?
+  - Queries har en standard retry på 3 ganger, mens muteringer har ingen. 
+    Hvorfor tror du det er slik?
 */
 
 interface NewUserRequest {

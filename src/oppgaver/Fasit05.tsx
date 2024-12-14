@@ -14,7 +14,6 @@ import axios from "axios";
   💡 Refleksjonsspørsmål:
   - Hva er det viktigste å ha med når du logger feilen?
   - Hva er forskjellen på data.message og error.message?
-  - Queries har en standard retry på 3 ganger, mens muteringer har ingen. Hvorfor det?
 */
 
 const maxRetries = 3;

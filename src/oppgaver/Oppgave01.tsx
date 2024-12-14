@@ -3,7 +3,10 @@ import { fetchUsers, queryKeyUsers, User } from "../utils/postForm";
 import { useQuery } from "@tanstack/react-query";
 
 /*
-  👉 Oppgave: Fjern isLoading- sjekken og refresh siden. Hindre kræsj med en ErrorBoundary.
+  👉 Oppgave: Hindre kræsj med ErrorBoundary
+  - Kjør opp applikasjonen
+  - Fjern isLoading- sjekken. Dette vil fremprovosere en kræsj
+  - Ta i bruk ErrorBoundary for komponent Oppgave01 (ErrorBoundary er allerede lagd. Se ErrorBoundary.tsx)
 
   💡 Refleksjonsspørsmål:
   - Hvorfor kræsjer appen i utgangspunktet?
